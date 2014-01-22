@@ -1,0 +1,82 @@
+<?php
+
+class Application_Model_ApplicantsPersonalData
+{
+
+	//declare the user's attributes
+	private $APPLICANTS_PERSONAL_DATA_ID;
+	private $APPLICANTS_PERSONAL_DATA_DESIRED_POSITION;
+	private $APPLICANTS_PERSONAL_DATA_RELIGION;
+	private $APPLICANTS_PERSONAL_DATA_AGE;
+	private $APPLICANTS_PERSONAL_DATA_OTHERSKILLS;
+	private $APPLICANTS_PERSONAL_DATA_EXABROAD;
+	private $APPLICANTS_PERSONAL_DATA_EXABROAD_YEARS;
+	private $APPLICANTS_PERSONAL_DATA_COUNTRY_ABROAD;
+	private $APPLICANTS_PERSONAL_DATA_FIRSTNAME;
+	private $APPLICANTS_PERSONAL_DATA_MIDDLENAME;
+	private $APPLICANTS_PERSONAL_DATA_LASTNAME;
+	private $APPLICANTS_PERSONAL_DATA_HEIGHT;
+	private $APPLICANTS_PERSONAL_DATA_WEIGHT;
+	private $APPLICANTS_PERSONAL_DATA_GENDER;
+	private $APPLICANTS_PERSONAL_DATA_ADDRESS;
+	private $APPLICANTS_PERSONAL_DATA_TELEPHONE;
+	private $APPLICANTS_PERSONAL_DATA_CELLPHONE;
+	private $APPLICANTS_PERSONAL_DATA_DATEOFBIRTH;
+	private $APPLICANTS_PERSONAL_DATA_PLACEOFBIRTH;
+	
+	
+	//upon construction, map the values
+	//from the $sysmodules_row if available
+	public function __construct($sysmodules_row = null)
+	{
+		if( !is_null($sysmodules_row) && $sysmodules_row instanceof Zend_Db_Table_Row ) {
+			$this->APPLICANTS_PERSONAL_DATA_ID = $sysmodules_row->APPLICANTS_PERSONAL_DATA_ID;
+			$this->APPLICANTS_PERSONAL_DATA_DESIRED_POSITION = $sysmodules_row->APPLICANTS_PERSONAL_DATA_DESIRED_POSITION;
+			$this->APPLICANTS_PERSONAL_DATA_RELIGION = $sysmodules_row->APPLICANTS_PERSONAL_DATA_RELIGION;
+			$this->APPLICANTS_PERSONAL_DATA_AGE = $sysmodules_row->APPLICANTS_PERSONAL_DATA_AGE;
+			$this->APPLICANTS_PERSONAL_DATA_OTHERSKILLS = $sysmodules_row->APPLICANTS_PERSONAL_DATA_OTHERSKILLS;
+			$this->APPLICANTS_PERSONAL_DATA_EXABROAD = $sysmodules_row->APPLICANTS_PERSONAL_DATA_EXABROAD;
+			$this->APPLICANTS_PERSONAL_DATA_EXABROAD_YEARS = $sysmodules_row->APPLICANTS_PERSONAL_DATA_EXABROAD_YEARS;
+			$this->APPLICANTS_PERSONAL_DATA_COUNTRY_ABROAD = $sysmodules_row->APPLICANTS_PERSONAL_DATA_COUNTRY_ABROAD;
+			$this->APPLICANTS_PERSONAL_DATA_FIRSTNAME = $sysmodules_row->APPLICANTS_PERSONAL_DATA_FIRSTNAME;
+			$this->APPLICANTS_PERSONAL_DATA_MIDDLENAME = $sysmodules_row->APPLICANTS_PERSONAL_DATA_MIDDLENAME;
+			$this->APPLICANTS_PERSONAL_DATA_LASTNAME = $sysmodules_row->APPLICANTS_PERSONAL_DATA_LASTNAME;
+			$this->APPLICANTS_PERSONAL_DATA_HEIGHT = $sysmodules_row->APPLICANTS_PERSONAL_DATA_HEIGHT;
+			$this->APPLICANTS_PERSONAL_DATA_WEIGHT = $sysmodules_row->APPLICANTS_PERSONAL_DATA_WEIGHT;
+			$this->APPLICANTS_PERSONAL_DATA_GENDER = $sysmodules_row->APPLICANTS_PERSONAL_DATA_GENDER;
+			$this->APPLICANTS_PERSONAL_DATA_ADDRESS = $sysmodules_row->APPLICANTS_PERSONAL_DATA_ADDRESS;
+			$this->APPLICANTS_PERSONAL_DATA_TELEPHONE = $sysmodules_row->APPLICANTS_PERSONAL_DATA_TELEPHONE;
+			$this->APPLICANTS_PERSONAL_DATA_CELLPHONE = $sysmodules_row->APPLICANTS_PERSONAL_DATA_CELLPHONE;
+			$this->APPLICANTS_PERSONAL_DATA_DATEOFBIRTH = $sysmodules_row->APPLICANTS_PERSONAL_DATA_DATEOFBIRTH;
+			$this->APPLICANTS_PERSONAL_DATA_PLACEOFBIRTH = $sysmodules_row->APPLICANTS_PERSONAL_DATA_PLACEOFBIRTH;
+		}
+	}
+	
+	//magic function __set to set the
+	//attributes of the User model
+	public function __set($name, $value)
+	{
+		switch($name) {
+			case 'APPLICANTS_PERSONAL_DATA_ID':
+				//if the id isn't null, you shouldn't update it!
+				if( !is_null($this->APPLICANTS_PERSONAL_DATA_ID) ) {
+					throw new Exception('Cannot update APPLICANTS_PERSONAL_DATA_ID!');
+				}
+				break;
+		}
+			
+		//set the attribute with the value
+		$this->$name = $value;
+	}
+	
+	public function __get($name)
+	{
+		return $this->$name;
+	}
+	
+	public function __getProperties()
+	{
+		return get_object_vars($this);
+	}
+}
+

@@ -1,0 +1,425 @@
+<?php 
+echo $this->partial('partials/navbar.phtml',
+		array('selected' => $this->navdata));
+?>
+
+<div class="container-fluid-full">
+
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				
+				<div class="row-fluid actions">
+													
+					<input type="text" class="search span12" placeholder="..." />
+				
+				</div>	
+				
+				<?php 
+					echo $this->partial('partials/mainmenu.phtml',
+							array('data' => $this->data));
+					?>
+				
+				
+			</div>
+			<!-- end: Main Menu -->
+						
+			<!-- start: Content -->
+			<div id="content" class="span10">
+			
+						
+			<div class="row-fluid">
+				
+				<!-- start  -->
+					<div class="box span12">
+							
+								<div class="box-header">
+									<h2><i class="icon-edit"></i><b>CREATE DAILY STATUS</b></h2>
+									<div class="box-icon">
+										<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
+										<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+										<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+									</div>
+								</div>
+								
+								<?php 
+									$objAppDS = new Application_Model_ApplicantsDailyStatusMapper();
+									$res = $objAppDS->fetchAllApplicantsWithOutDailystatus();
+									
+									
+									$arrData = array();
+									
+									$dailystatusession = new Zend_Session_Namespace('DAILY_STATUS_SESS');
+									
+									foreach ($res as $app) {
+										$arrData[] = $app->APPLICANTS_PERSONAL_DATA_FIRSTNAME ." ".$app->APPLICANTS_PERSONAL_DATA_LASTNAME; 
+										$refArrData[$app->APPLICANTS_PERSONAL_DATA_ID] = $app->APPLICANTS_PERSONAL_DATA_FIRSTNAME ." ".$app->APPLICANTS_PERSONAL_DATA_LASTNAME;
+									}
+									
+									$dailystatusession->refArrData = $refArrData;
+									
+									$json_data_src = json_encode($arrData);
+									//print_r($json_data_src);
+								?>
+								
+								<div class="box-content">
+										<form class="form-horizontal" name="newAppDailystatus" action="/Dailystatus" method="post" enctype="multipart/form-data"/>
+											  <fieldset>
+											  		<input type="hidden" name="newAppDailystatus" value="1">
+											  		<input type="hidden" name="inputAppDataId" id="inputAppDataId" value="">
+											  		
+											  		<input type="hidden" name="hiddenMedicalResult" id="hiddenMedicalResult" value="">
+											  		<input type="hidden" name="hiddenTraining" id="hiddenTraining" value="">
+											  		<div class="control-group">
+													  <label for="typeahead" class="control-label">Enter Applicant's Name: </label>
+													  <div class="controls">
+														<input type="text" data-source='<?php echo $json_data_src; ?>' data-items="4" data-provide="typeahead" id="txtAppFullname" name="txtAppFullname" class="span6 typeahead"><ul class="typeahead dropdown-menu" style="top: 234.4px; left: 218px; display: none;"><li data-value="Texas" class="active"><a href="#"><strong>Tex</strong>as</a></li></ul>
+														<p class="help-block">Auto search...</p>
+													  </div>
+													</div>
+													<div class="control-group ">
+													<label for="inputSuccess" class="control-label">Ref No. / Code</label>
+													<div class="controls">
+													  <input type="text" id="inputRefno" name="inputRefno" >
+													</div>
+												  </div>
+												  
+												   <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Date Of Birth</label>
+													<div class="controls">
+													  <input type="text" id="inputDateofbirth" name="inputDateofbirth" readonly>
+													</div>
+												  </div>
+												  <div class="control-group ">
+														<label for="inputSuccess" class="control-label">Place Of Birth</label>
+														<div class="controls">
+														  <input type="text" id="inputPlaceofbirth" name="inputPlaceofbirth" readonly>
+														</div>
+												  </div>
+												  
+												  <div class="control-group ">
+														<label for="inputContactno" class="control-label">Contact No.</label>
+														<div class="controls">
+														  <input type="text" id="inputContactno" name="inputContactno">
+														</div>
+												  </div>
+												  
+												  <div class="control-group">
+													  <label class="control-label" for="fileInput">Select Applicant's Photo</label>
+													  <div class="controls">
+														<input class="input-file uniform_on" id="pic" name="pic" type="file" />
+													  </div>
+													</div>  
+							
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Religion</label>
+													<div class="controls">
+													  <input type="text" id="inputReligion" name="inputReligion" readonly >
+													</div>
+												  </div>
+												  
+												  <div class="control-group ">
+													<label for="inputAgentbranch" class="control-label">Agent Branch</label>
+													<div class="controls">
+													  <input type="text" id="inputAgentbranch" name="inputAgentbranch" >
+													</div>
+												  </div>
+												  
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Position Applied</label>
+													<div class="controls">
+													  <input type="text" id="inputDesiredPosition" name="inputDesiredPosition" class="" readonly>
+													</div>
+												  </div>
+												  
+												 
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Civil Status</label>
+													<div class="controls">
+													  <input type="text" id="inputCivilstat" name="inputCivilstat" readonly/>
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">No. Of Children</label>
+													<div class="controls">
+													  <input type="text" id="inputNoofchildren" name="inputNoofchildren" readonly/>
+													</div>
+												  </div>
+												   
+												  
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Passport No.</label>
+													<div class="controls">
+													  <input type="text" id="inputPassportNo" name="inputPassportNo" >
+													</div>
+												  </div>
+												  
+												  <div class="control-group">
+													  <label class="control-label" for="inputPassportDateissue">Passport Date of Issue</label>
+													  <div class="controls">
+														<input type="text" class="input-xlarge datepicker" id="inputPassportDateissue" name="inputPassportDateissue" value="" />
+													  </div>
+													</div>
+												  <div class="control-group">
+													  <label class="control-label" for="inputPassportDateexpire">Passport Expiry Date</label>
+													  <div class="controls">
+														<input type="text" class="input-xlarge datepicker" id="inputPassportDateexpire" name="inputPassportDateexpire" value="" />
+													  </div>
+													</div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Passport Place of Issue</label>
+													<div class="controls">
+													  <input type="text" id="inputPassportplaceissue" name="inputPassportplaceissue" />
+													</div>
+												  </div>
+												  
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Speak English</label>
+													<div class="controls">
+													  <input type="text" id="inputSpeakenglish" name="inputSpeakenglish" />
+													</div>
+												  </div>
+												  
+												  <div class="control-group ">
+													<label for="inputEducAtt" class="control-label">Educ. Attainment</label>
+													<div class="controls">
+													  <input type="text" id="inputEducAtt" name="inputEducAtt" />
+													</div>
+												  </div> 
+												  <div class="control-group ">
+													<label for="inputContract" class="control-label">Contract Length</label>
+													<div class="controls">
+													  <input type="text" id="inputContract" name="inputContract" />
+													</div>
+												  </div> 
+												  <div class="control-group ">
+													<label for="inputSalary" class="control-label">Salary</label>
+													<div class="controls">
+													  <input type="text" id="inputSalary" name="inputSalary" />
+													</div>
+												  </div> 
+												  
+												   <div id="step4" class="step-pane active">
+															<div class="alert alert-info">
+																<button data-dismiss="alert" class="close" type="button">×</button>
+																<strong>Daily Status Monitoring Data</strong> 
+															</div>
+															
+														</div>
+												  <div class="form-actions">
+													 	<div class="control-group">
+														  <label class="control-label" for="dateappin">App In</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="dateappin" name="dateappin" value="" />
+														  </div>
+														</div>
+														<div class="control-group">
+														  <label class="control-label" for="datemedical">Medical Date</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datemedical" name="datemedical" value="" />
+														  </div>
+														</div>
+														
+														<?php 
+														  	$medical_mapper = new Application_Model_ApplicantsDailyStatusMedicalresultSelectorMapper();
+														  	$med = $medical_mapper->fetchAllApplicantsDailyStatusMedicalSelector();
+														  	//print_r($res);
+														  ?>
+														 
+														  <div class="control-group ">
+															<label for="inputMedicalresult" class="control-label">Medical Result</label>
+															<div class="controls">
+															  <select id="selectError3" name="inputMedicalresult">
+															  		<option value=""></option>
+															  		<?php 
+															  		foreach($med as $k) {
+															  			echo '<option value="'.$k['APPLICANTS_DAILYSTATUS_MEDICALRESULT_SELECTOR_ID'].'">'.$k['APPLICANTS_DAILYSTATUS_MEDICALRESULT_SELECTOR_VALUE'].'</option>';	
+															  		}
+															  		?>
+															  </select>
+															  <span class="help-inline" id="labelMedicalresult"></span>
+															</div>
+														  </div>
+														
+													  <div class="control-group">
+														  <label class="control-label" for="datepdos">PDOS</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datepdos" name="datepdos" value="" />
+														  </div>
+														</div>
+														<div class="control-group">
+														  <label class="control-label" for="datenbi">NBI</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datenbi" name="datenbi" value="" />
+														  </div>
+														</div>
+														<div class="control-group">
+														  <label class="control-label" for="datenbirr">NBI RR</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datenbirr" name="datenbirr" value="" />
+														  </div>
+														</div>
+														
+														 <div class="control-group ">
+															<label for="checkTraining" class="control-label">Training</label>
+															<div class="controls">
+															  <select id="checkTraining" name="checkTraining">
+															  		<option value=""></option>
+															  		<option value="Yes">Yes</option>
+															  		<option value="Pending">Pending</option>
+															  		
+															  </select>
+															</div>
+														  </div>
+														  
+														<div class="control-group">
+														  <label class="control-label" for="datetesda">TESDA</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datetesda" name="datetesda"value="" />
+														  </div>
+														</div>
+														
+														
+														<div class="control-group">
+														  <label class="control-label" for="datetesda">OWWA</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="dateowwa" name="dateowwa"value="" />
+														  </div>
+														</div>
+														
+														<div class="control-group " id="div_inputpoea">
+															<label for="inputpoea" class="control-label">POEA</label>
+															<div class="controls">
+															  <input type="text" id="inputpoea" name="inputpoea" />
+															</div>
+														  </div> 
+												  
+												  
+														<div class="control-group">
+														  <label class="control-label" for="datevisaissue">VISA Issue</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datevisaissue" name="datevisaissue" value="" />
+														  </div>
+														</div>
+														<div class="control-group">
+														  <label class="control-label" for="datevisaexpiry">VISA Expiry</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datevisaexpiry" name="datevisaexpiry" value="" />
+														  </div>
+														</div>
+														
+														<div class="control-group">
+														  <label class="control-label" for="datestampingfiled">Stamping Filed</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datestampingfiled" name="datestampingfiled" value="" />
+														  </div>
+														</div>
+														<div class="control-group">
+														  <label class="control-label" for="datestampingrelease">Stamping Release</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datestampingrelease" name="datestampingrelease" value="" />
+														  </div>
+														</div>
+														
+														<div class="control-group">
+														  <label class="control-label" for="datecontractin">Contract In</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datecontractin" name="datecontractin" value="" />
+														  </div>
+														</div>
+														
+														<div class="control-group">
+														  <label class="control-label" for="dateprocess">Process Date</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="dateprocess" name="dateprocess" value="" />
+														  </div>
+														</div>
+														
+														<div class="control-group ">
+															<label for="inputSerum" class="control-label">Serum</label>
+															<div class="controls">
+															  <input type="text" id="inputSerum" name="inputSerum" >
+															</div>
+														  </div>
+														
+														<div class="control-group">
+														  <label class="control-label" for="datebooking">Booking Date</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datebooking" name="datebooking" value="" />
+														  </div>
+														</div>
+														
+														<div class="control-group">
+														  <label class="control-label" for="datedeployed">Deployed Date</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="datedeployed" name="datedeployed" value="" />
+														  </div>
+														</div>
+														
+														<div class="control-group ">
+															<label for="inputSuccess" class="control-label">Remarks</label>
+															<div class="controls">
+																<textarea  id="inputDailystatremarks" name="inputDailystatremarks"></textarea>
+															  
+															</div>
+														  </div> 
+														  
+														  
+														 <div class="control-group">
+														  <label class="control-label" for="dateendcontract">End Contract Date</label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="dateendcontract" name="dateendcontract" value="" />
+														  </div>
+														</div>
+														
+														<div class="control-group">
+														  <label class="control-label" for="lastupdatestatus">Status Last Updated : </label>
+														  <div class="controls">
+															<input type="text" class="input-xlarge datepicker" id="lastupdatestatus" name="lastupdatestatus" value="" readonly />
+														  </div>
+														</div>
+														
+												  </div>
+												  
+												  <div class="control-group ">
+													<div class="controls">
+													  <button class="btn btn-primary" type="submit" id="inputAgentsDataSubmit" name="inputAgentsDataSubmit">Save and Continue</button>
+													</div>
+												  </div>
+											  </fieldset>
+										</form>
+									</div>	
+								</div>	 
+				<!-- end  -->
+			
+			</div>	
+		
+					
+			</div>
+			<!-- end: Content -->
+				
+		</div><!--/fluid-row-->
+		
+
+		<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Settings</h3>
+			</div>
+			<div class="modal-body">
+				<p>Here settings can be configured...</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary">Save changes</a>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<?php 
+					echo $this->partial('partials/footer.phtml',
+							array('data' => $this->data));
+					?>
+</div>

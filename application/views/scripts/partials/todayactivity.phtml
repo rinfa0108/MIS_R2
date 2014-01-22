@@ -1,0 +1,92 @@
+<div class="row-fluid">
+				
+				<div class="box span12">
+					<div class="box-header">
+						<h2><i class="icon-list"></i>Today's Activity</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+							
+						</div>
+					</div>
+					<div class="box-content">
+						<ul class="tickets">
+							
+							
+							<?php
+							date_default_timezone_set("Asia/Manila");
+							$current = date("m/d/Y");
+							
+							$dailystatus_mapper = new Application_Model_ApplicantsDailyStatusMapper();
+							$res_dailystatusCurrent = $dailystatus_mapper->gettodayactivity();
+							//$arr_dailystatusCurrent = get_object_vars($res_dailystatusCurrent);
+							$arr = array();
+							if($res_dailystatusCurrent) {
+							foreach ($res_dailystatusCurrent as $obj) {
+								$arr[] = get_object_vars($obj);
+							}
+							
+							foreach ($arr as $appdata) {
+								$key = array_search($current, $appdata);
+								//echo $key;
+								if($key == 'APPLICANTS_DAILYSTATUS_APPIN') {
+									$stat = 'App In';
+									$colorstat = '<span class="label label-success">Complete</span>';
+								} elseif($key == 'APPLICANTS_DAILYSTATUS_PASSPORT') {
+									$stat = 'Passport';
+									$colorstat = '<span class="label label-success">Complete</span>';
+								}elseif($key == 'APPLICANTS_DAILYSTATUS_STAMPING_FILE') {
+									$stat = 'Stamping';
+									$colorstat = '<span class="label label-info">In progress</span>';
+								} elseif($key == 'APPLICANTS_DAILYSTATUS_MEDICALDATE') {
+									$stat = 'Medical';
+									$colorstat = '<span class="label label-warning">Pending</span>';
+								} elseif($key == 'APPLICANTS_DAILYSTATUS_NBIRR') {
+									$stat = 'NBI RR';
+									$colorstat = '<span class="label label-success">Complete</span>';
+								} elseif($key == 'APPLICANTS_DAILYSTATUS_OWWA') {
+									$stat = 'OWWA';
+									$colorstat = '<span class="label label-success">Complete</span>';
+								}elseif($key == 'APPLICANTS_DAILYSTATUS_PASSPORTDATEEXPIRE') {
+									$stat = 'Passport';
+									$colorstat = '<span class="label label-important">EXPIRED</span>';
+								}elseif($key == 'APPLICANTS_DAILYSTATUS_NBI') {
+									$stat = 'NBI';
+									$colorstat = '<span class="label label-success">Complete</span>';
+								}elseif($key == 'APPLICANTS_DAILYSTATUS_TRAINING') {
+									$stat = 'NBI';
+									$colorstat = '<span class="label label-info">In progress</span>';
+								} else {
+									$stat = 'Updated Details';
+									$colorstat = '<span class="label label-info">In progress</span>';
+								}
+								
+								
+								
+								echo '
+									<li class="ticket">
+										<a href="#">
+											<div class="left">
+												<span class="status">
+													'.$colorstat.'
+												</span>
+												<span class="date">'.$current.'</span>
+												<span class="title">'.$stat.'</span>
+											</div>
+											<div class="right">
+												<span class="name">'.$appdata['APPLICANTS_PERSONAL_DATA_FIRSTNAME'].' '.$appdata['APPLICANTS_PERSONAL_DATA_LASTNAME'].'</span> 	
+												<span class="number">'.$appdata['APPLICANTS_DAILYSTATUS_CODE'].'</span>
+											</div>	                                                     
+										</a>
+									</li>
+									
+									';
+							}
+							}
+							?>
+							
+						  	
+						</ul>
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->

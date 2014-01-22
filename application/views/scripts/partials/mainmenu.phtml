@@ -1,0 +1,59 @@
+<?php 
+
+/**
+ ["SYS_USERS_ID"] => string(1) "1"
+ ["SYS_USERS_USERNAME"] => string(5) "admin"
+ ["SYS_USERS_PASSWORD"] => string(40) "d033e22ae348aeb5660fc2140aec35850c4da997"
+ ["SYS_USERS_FULLNAME"] => string(13) "administrator"
+ ["SYS_USERS_GROUP_ID"] => string(1) "1"
+ ["SYS_USERS_DATE_CREATED"] => string(19) "2013-11-24 23:41:49"
+ */
+$sysuserSess = new Zend_Session_Namespace('SYSUSER_SESS');
+//echo $sysuserSessSYS_USERS_GROUP_ID;
+//Zend_Debug::dump($sysuserSess->sysuser);
+?>
+
+
+		<div class="nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li><a href="/"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
+						
+						<li><a href="/Dailystatus"><i class="icon-eye-open"></i><span class="hidden-tablet"> Daily Status </span></a></li>
+						<li><a href="/Applicantdata"><i class="icon-edit"></i><span class="hidden-tablet"> Applicants Data </span></a></li>
+						<li><a href="/Agentbranch"><i class="icon-edit"></i><span class="hidden-tablet"> Agent Branch </span></a></li>
+						<?php 
+						if($sysuserSess->sysuser['SYS_USERS_GROUP_ID'] == 1 || $sysuserSess->sysuser['SYS_USERS_GROUP_ID'] == 3) {
+						
+						?>
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Accounting</span> <span class="label">3</span></a>
+							<ul>
+								<li><a class="submenu" href="/Accounting/setaccountingexpensesbranch"><i class="icon-hdd"></i><span class="hidden-tablet"> Branch Expenses</span></a></li>
+								<li><a class="submenu" href="/Accounting/setaccountingexpensesheadoffice"><i class="icon-hdd"></i><span class="hidden-tablet"> Head Office Exp</span></a></li>
+								<li><a class="submenu" href="/Accounting/setaccountingexpensesutilities"><i class="icon-hdd"></i><span class="hidden-tablet"> Utilities Exp</span></a></li>
+								<li><a class="submenu" href="/Accounting/setaccountingexpensescommission"><i class="icon-hdd"></i><span class="hidden-tablet"> Commission Exp</span></a></li>
+								
+								<li><a class="submenu" href="/Accounting/getaccountingreports"><i class="icon-envelope"></i><span class="hidden-tablet"> Reports</span></a></li>
+
+							</ul>	
+						</li>
+					
+						<?php
+						}
+						 
+						if($sysuserSess->sysuser['SYS_USERS_GROUP_ID'] == 1) {
+						
+						?>
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Administrator</span> <span class="label">3</span></a>
+							<ul>
+								<li><a class="submenu" href="Admin/sysusers"><i class="icon-hdd"></i><span class="hidden-tablet"> System Users</span></a></li>
+								<li><a class="submenu" href="Admin/modules"><i class="icon-envelope"></i><span class="hidden-tablet"> System Modules</span></a></li>
+								<li><a class="submenu" href="Admin/usergroup"><i class="icon-tasks"></i><span class="hidden-tablet"> User Groups</span></a></li>
+							</ul>	
+						</li>
+						<?php 
+						}
+						?>
+					</ul>
+				</div>

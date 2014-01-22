@@ -1,0 +1,144 @@
+<?php 
+echo $this->partial('partials/navbar.phtml',
+		array('selected' => $this->navdata));
+?>
+
+<div class="container-fluid-full">
+
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				
+				<div class="row-fluid actions">
+													
+					<input type="text" class="search span12" placeholder="..." />
+				
+				</div>	
+				
+				<?php 
+					echo $this->partial('partials/mainmenu.phtml',
+							array('data' => $this->data));
+					?>
+				
+				
+			</div>
+			<!-- end: Main Menu -->
+						
+			<!-- start: Content -->
+			<div id="content" class="span10">
+			
+					<?php 
+					echo $this->partial('partials/applicantdatamenu.phtml',
+							array('data' => $this->data));
+					?>
+					
+						<?php 
+						$newbiodatasession = new Zend_Session_Namespace('NEW_BIODATA_SESS');
+						$newappdata = $newbiodatasession->newappdata;
+						?>
+
+						<div class="row-fluid">
+							<div class="box span12">
+							
+								<div class="box-header">
+									<h2><i class="icon-edit"></i>EDUCATION DETAILS FOR <b><?php echo $newappdata['APPLICANTS_PERSONAL_DATA_FIRSTNAME'].' '.$newappdata['APPLICANTS_PERSONAL_DATA_LASTNAME']; ?></b></h2>
+									<div class="box-icon">
+										<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
+										<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+										<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+									</div>
+								</div>
+								<div class="box-content">
+										<form class="form-horizontal" action="/applicantdata/newrelatives" method="post" />
+											  <fieldset>
+											  <input type="hidden" id="APPLICANTS_PERSONAL_DATA_ID" name="APPLICANTS_PERSONAL_DATA_ID" value="<?php echo $newappdata['APPLICANTS_PERSONAL_DATA_ID'];?>">
+											  
+												<div class="control-group ">
+													<label for="inputSuccess" class="control-label">NAME OF COMPANY</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputAgentsName" >											  				  
+													</div>
+												  </div>
+												  <div class="control-group ">
+														<span class="educationalSpan">EDUCATIONAL ATTAINMENT</span>
+												  </div>
+												  <div class="control-group ">
+														<label for="inputSuccess" class="control-label">Elementary</label>
+														<div class="controls">
+														  <input type="text" id="inputSuccess" name="inputAgentsName" >
+														</div>
+												  </div>
+												  <div class="control-group clearfix">
+														<label for="inputSuccess" class="control-label">Highschool</label>
+														<div class="controls">
+														  <input type="text" id="inputSuccess" name="inputAgentsContactNumbers" >
+														</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Vocational</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputAgentsAddress" >
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">College</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputAgentsRemarks" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Course</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputAgentsRemarks" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Other's Skills</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputAgentsRemarks" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Sisters</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputAgentsRemarks" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<div class="controls">
+													  <button class="btn btn-primary" type="submit" id="inputAgentsDataSubmit" name="inputAgentsDataSubmit">Save and Continue</button>
+													</div>
+												  </div>
+											  </fieldset>
+										</form>
+									</div>	
+								</div>	   
+						</div><!--/row-->	
+			</div>
+			<!-- end: Content -->
+				
+		</div><!--/fluid-row-->
+		
+
+		<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Settings</h3>
+			</div>
+			<div class="modal-body">
+				<p>Here settings can be configured...</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary">Save changes</a>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<?php 
+					echo $this->partial('partials/footer.phtml',
+							array('data' => $this->data));
+					?>
+</div>

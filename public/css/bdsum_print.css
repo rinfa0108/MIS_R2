@@ -1,0 +1,224 @@
+/*!
+ * Bio data summary print css file
+ * width 595 , height 842   //1654 Pixels 	2339 Pixels
+ */
+ 
+ 
+ #bdsummary_header {
+ 	height : 150px;
+ 	font-weight : normal;
+ }
+ 
+ #bdsummary_logo , #bdsummary_info {
+ 	position :relative;
+ 	float : left;
+ }
+ #bdsummary_logo {
+ 	width : 150px;
+ }
+  #bdsummary_info p {
+  	height : 10px;
+  	margin : 0 auto;
+  	text-align : center;
+  	padding-top : 5px;
+  	color : #000;
+  } 
+ 
+ #bdsummary_info {
+  	width : 750px;
+  }
+  
+  #bdsummary_info #companyname {
+  	font-size : 23px;
+  	color : #C80000;
+  	height : 20px;
+  }
+ 
+#bdsummary_info #poea_info {
+	font-size : 20px;
+	color : #000;
+	height : 18px;
+}
+
+#bdsummary_wrapper {
+ 	width : 916px;
+ 	border : 0px #000 solid;
+ 	padding : 2px;
+ 	font-weight : bold;
+ }
+ 
+ #bdsummary_primarydetails_left > div {
+ 	border : 0px #000 solid;	
+ 	height : 72px;
+ }
+ 
+ #bdsummary_primarydetails_left > div > div {
+ 	position : relative;
+ 	float : left;
+ }
+ 
+ #bdsummary_primarydetails_left div #label{
+ 	width : 138px;
+ }
+ 
+ #bdsummary_primarydetails_left div #arabic_value {
+ 	width : 85px;
+ }
+ 
+ #bdsummary_primarydetails_left div .value {
+ 	width : 250px;
+ 	height : 25px;
+ 	margin-right : 5px;
+ 	border-bottom : 1px #000 solid;
+ 	font-size : 17px;
+ }
+ 
+ #bdsummary_primarydetails_left {
+ 	margin-right : 5px;
+ 	margin-left : 10px;
+ 	width : 55%;
+ }
+ 
+ #bdsummary_primarydetails_wbphoto {
+ 	width : 43%;
+ }
+ #bdsummary_primarydetails_wbphoto, #bdsummary_primarydetails_left {
+ 	margin-top  : 3px;
+ 	border : 0px #000 solid;
+ 	position : relative;
+ 	float : left;
+ }
+ 
+ #bdsummary_primarydetails_imgwrapper {
+ 	width : 395px;
+ 	height : 436px;
+ 	overflow: hidden;
+ }
+ 
+ #bdsummary_primarydetails {
+ 	width : 100%;
+
+ 	height : 450px;
+ 	position : relative;
+ }
+ 
+ #bdsummary_secondarydetails {
+ 	margin-top: 5px;
+ 	width : 100%;
+ 	height : 580px;
+ 	position : relative;
+ }
+ 
+ #bdsummary_secondarydetails_firstcol {
+ 	height : 204px;
+ 	padding :0;
+ 	position : relative;
+ }
+ #bdsummary_secondarydetails_firstcol_col > div {
+ 	width : 225px;
+ 	height : 95px;
+ 	border : 2px #000 solid;
+ 	position : relative;
+ 	float : left;
+ 	padding-top : 5px;
+ }
+
+  #bdsummary_secondarydetails_firstcol_col > div > p {
+  	margin : 0 auto;
+  	text-align : center;
+  	padding-top : 5px;
+  }
+  
+  #bdsummary_secondarydetails_secondcol {
+  	height : 293px;
+ 	padding :0;
+ 	position : relative;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left{
+  	width : 456px;
+  	position : relative;
+  	float : left;
+  }
+  
+  #bdsummary_secondarydetails_thirdcol > div {
+  	position : relative;
+  	float: left;
+  	width :  301px;
+  	border : 1px solid #000;
+  	height : 80px;
+  }
+  
+  #bdsummary_secondarydetails_thirdcol > div  p {
+  margin : 0 auto;
+  	text-align : center;
+  	padding-top : 5px;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_right {
+  	width : 451px;
+  	position : relative;
+  	float : left;
+  	border : 1px solid #000;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left_1, #bdsummary_secondarydetails_secondcol_left_2, #bdsummary_secondarydetails_secondcol_left_3{
+  	width : 100%;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left_1 {
+  	height : 95px;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left > div{
+  	border : 1px solid #000;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left > div > p, 
+  #bdsummary_secondarydetails_secondcol_left_2 > div > p,
+    #bdsummary_secondarydetails_secondcol_left_3 > div p {
+  	margin : 0 auto;
+  	text-align : center;
+  	padding-top : 5px;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left_2 {
+  	height : 90px;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left_3 {
+  	height : 100px;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left_2 > div {
+  	width : 111px;
+  	height : 90px;
+  	padding : 0;
+  	position : relative;
+  	float: left;
+  	border-left : 1px solid #000;
+  	border-bottom : 1px solid #000;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left_3 > div {
+  	width : 100%;
+  	height : 100px;
+  	border : 1px solid #000;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_left_3 {
+  	border : 1px solid #000;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_right {
+  	height : 290px;
+  }
+  
+  #bdsummary_secondarydetails_secondcol_right > div {
+  	margin-left : 5px;
+  }
+  
+  #bdsummary_secondarydetails p#value {
+  	font-size : 17px;
+  }
+  

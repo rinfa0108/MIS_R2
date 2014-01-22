@@ -1,0 +1,212 @@
+<?php 
+echo $this->partial('partials/navbar.phtml',
+		array('selected' => $this->navdata));
+?>
+
+<div class="container-fluid-full">
+
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				
+				<div class="row-fluid actions">
+													
+					<input type="text" class="search span12" placeholder="..." />
+				
+				</div>	
+				
+				<?php 
+					echo $this->partial('partials/mainmenu.phtml',
+							array('data' => $this->data));
+					?>
+				
+				
+			</div>
+			<!-- end: Main Menu -->
+						
+				<!-- start: Content -->
+				<div id="content" class="span10">
+				
+						
+						<div class="row-fluid">
+							<div class="box span12">
+								<div class="box-content alerts">
+									<?php 
+										$response = $this->response;
+										if($response['newsavebranchexp']) {
+											echo '
+												<div class="alert alert-success">
+										<button type="button" class="close" data-dismiss="alert">×</button>
+										<strong>Well done!</strong> Branch Expenses Successfully saved.. 
+									</div>
+		
+												';
+										}
+									?>
+									
+									
+								</div>
+					
+								<div class="box-header">
+									<h2><i class="icon-edit"></i>BRANCH EXPENSES</h2>
+									<div class="box-icon">
+										<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
+										<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+										<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+									</div>
+								</div>
+								<div class="box-content">
+										<form class="form-horizontal" action="/Accounting/setaccountingexpensesbranch" method="post" />
+											  <fieldset>
+											  		<input type="hidden" name="newaccountingexpensesbranch" id="newaccountingexpensesbranch" value="1">
+												  <div class="control-group ">
+												  	<?php 
+												  	date_default_timezone_set("Asia/Manila");
+												  	$current = date("m/d/Y");
+												  	?>
+													<label for="todaysDate" class="control-label">Date : </label>
+													<div class="controls">
+													  <input type="text" id="todaysDate" name="todaysDate" value="<?php echo $current;?>" readonly/>
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="ACCOUNTINGEXPENSES_BRANCH_AGENTNAME" class="control-label">Agent Name </label>
+													<div class="controls">
+													  <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_AGENTNAME" name="ACCOUNTINGEXPENSES_BRANCH_AGENTNAME" >
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="ACCOUNTINGEXPENSES_BRANCH_BNAME" class="control-label">Branch </label>
+													<div class="controls">
+													  <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_BNAME" name="ACCOUNTINGEXPENSES_BRANCH_BNAME" >
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="ACCOUNTINGEXPENSES_BRANCH_APPLICANTNAME" class="control-label">Applicants Name</label>
+													<div class="controls">
+													  <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_APPLICANTNAME" name="ACCOUNTINGEXPENSES_BRANCH_APPLICANTNAME" >
+													</div>
+												  </div>
+												  <div class="control-group ">
+														<label for="ACCOUNTINGEXPENSES_BRANCH_AGE" class="control-label">Applicants Age</label>
+														<div class="controls">
+														  <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_AGE" name="ACCOUNTINGEXPENSES_BRANCH_AGE" >
+														</div>
+												  </div>
+												  <div class="control-group ">
+														<label for="ACCOUNTINGEXPENSES_BRANCH_HOMEADDRESS" class="control-label">Applicants Address</label>
+														<div class="controls">
+														  <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_HOMEADDRESS" name="ACCOUNTINGEXPENSES_BRANCH_HOMEADDRESS" >
+														</div>
+												  </div>
+												  <div class="control-group ">
+														<label for="ACCOUNTINGEXPENSES_BRANCH_CONTACTNUMBER" class="control-label">Contact No.</label>
+														<div class="controls">
+														  <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_CONTACTNUMBER" name="ACCOUNTINGEXPENSES_BRANCH_CONTACTNUMBER" >
+														</div>
+												  </div>
+												  <div class="control-group ">
+														<label for="ACCOUNTINGEXPENSES_BRANCH_PASSPORT" class="control-label">Passport No.</label>
+														<div class="controls">
+														  <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_PASSPORT" name="ACCOUNTINGEXPENSES_BRANCH_PASSPORT" >
+														</div>
+												  </div>
+												  <div class="control-group ">
+														<label for="ACCOUNTINGEXPENSES_BRANCH_PASSPORTEXP" class="control-label">Passport Expense</label>
+														
+														<div class="controls">
+															<div class="input-prepend">
+														 <span class="add-on">&#8369</span> <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_PASSPORTEXP" value="0" name="ACCOUNTINGEXPENSES_BRANCH_PASSPORTEXP" >
+															</div>
+														</div>	
+												  </div>
+												  
+												  <div class="control-group ">
+														<label for="ACCOUNTINGEXPENSES_BRANCH_AIRLINE" class="control-label">Airline</label>
+														<div class="controls">
+															<div class="input-prepend">
+														  	<span class="add-on">&#8369</span>	<input type="text" id="ACCOUNTINGEXPENSES_BRANCH_AIRLINE" value="0" name="ACCOUNTINGEXPENSES_BRANCH_AIRLINE" >
+															</div>
+														</div>
+												  </div>
+												  <div class="control-group ">
+														<label for="ACCOUNTINGEXPENSES_BRANCH_SEA" class="control-label">Sea</label>
+														<div class="controls">
+														  <div class="input-prepend">	
+														  	<span class="add-on">&#8369 </span> <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_SEA" value="0" name="ACCOUNTINGEXPENSES_BRANCH_SEA" >
+															</div>
+														</div>
+												  </div>
+												  <div class="control-group ">
+														<label for="ACCOUNTINGEXPENSES_BRANCH_LAND" class="control-label">Land</label>
+														
+														<div class="controls">
+															<div class="input-prepend">
+														 <span class="add-on">&#8369</span> <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_LAND" value="0" name="ACCOUNTINGEXPENSES_BRANCH_LAND" >
+															</div>
+														</div>
+														
+												  </div>
+												  
+												   <div class="control-group ">
+														<label for="ACCOUNTINGEXPENSES_BRANCH_TOTALEXP" class="control-label">Total Expenses</label>
+														
+														<div class="controls">
+															<div class="input-prepend">
+														 <span class="add-on">&#8369</span> <input type="text" id="ACCOUNTINGEXPENSES_BRANCH_TOTALEXP" name="ACCOUNTINGEXPENSES_BRANCH_TOTALEXP" readonly>
+															</div>
+														</div>
+														
+												  </div>
+												  
+												  <div class="control-group">
+													  <label class="control-label" for="ACCOUNTINGEXPENSES_BRANCH_DATEDEPARTURE">Date Departure</label>
+													  <div class="controls">
+														<input type="text" class="input-xlarge datepicker" id="ACCOUNTINGEXPENSES_BRANCH_DATEDEPARTURE" name="ACCOUNTINGEXPENSES_BRANCH_DATEDEPARTURE" value="" />
+													  </div>
+													</div>
+													 
+												  <div class="control-group ">
+													<div class="controls">
+													  <button class="btn btn-primary" type="submit" id="inputAgentsDataSubmit" name="inputAgentsDataSubmit">Save and Continue</button>
+													</div>
+												  </div>
+											  </fieldset>
+										</form>
+									</div>	
+								</div>	   
+						</div><!--/row-->	
+
+				
+				</div>
+				<!-- end: Content -->
+					
+			</div><!--/fluid-row-->
+			
+		
+		<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Settings</h3>
+			</div>
+			<div class="modal-body">
+				<p>Here settings can be configured...</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary">Save changes</a>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<?php 
+					echo $this->partial('partials/footer.phtml',
+							array('data' => $this->data));
+					?>
+</div>
+
+
+
+

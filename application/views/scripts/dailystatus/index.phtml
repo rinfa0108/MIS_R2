@@ -1,0 +1,258 @@
+<?php 
+echo $this->partial('partials/navbar.phtml',
+		array('selected' => $this->navdata));
+?>
+
+<div class="container-fluid-full">
+
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				
+				<div class="row-fluid actions">
+													
+					<input type="text" class="search span12" placeholder="..." />
+				
+				</div>	
+				
+				<?php 
+					echo $this->partial('partials/mainmenu.phtml',
+							array('data' => $this->data));
+					?>
+				
+				
+			</div>
+			<!-- end: Main Menu -->
+						
+			<!-- start: Content -->
+			<div id="content" class="span10">
+					<?php 
+					echo $this->partial('partials/applicantdatamenu.phtml',
+							array('data' => $this->data));
+					?>
+			
+					<div class="row-fluid">		
+						<div class="box span12">
+							<div class="box-header" data-original-title="">
+								<h2><i class="icon-user"></i><span class="break"></span>Applicants Daily Status</h2>
+								<div class="box-icon">
+									<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
+									<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+									<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+								</div>
+							</div>
+							<div class="box-content" id="dailystatus">
+								<table class="table table-striped table-bordered bootstrap-datatable datatable">
+								  <thead>
+									  <tr>
+									  	<th>Name</th>
+										  <th>Code / Ref No.</th>
+										  <th>Agent Branch</th>
+										  
+										  <th>Contact No.</th>
+										  <th>App In</th>
+										  <th>Medical Date/Result</th>
+										  <th>NBI</th>
+										  <th>NBI RR</th>
+										  <th>Training</th>
+										  <th>PDOS</th>
+										  <th>TESDA</th>
+										  <th>OWWA</th>
+										  <th>VISA Issue/Exp</th>
+										  <th>Stamping Filed/Release</th>
+										  <th>Contract In</th>
+										  <th>Process</th>
+										  <th>Serum</th>
+										  <th>Booking</th>
+										  <th>Deployed</th>
+										  <th>Remarks</th>
+										  
+									  </tr>
+								  </thead>   
+								  <tbody>
+
+									<?php 
+										/**
+										  ["APPLICANTS_PERSONAL_DATA_ID":"Application_Model_ApplicantsDailyStatus":private] => string(1) "1"
+										  ["AGENTBRANCH_ID":"Application_Model_ApplicantsDailyStatus":private] => string(5) "paulo"
+										  ["APPLICANTS_DAILYSTATUS_CONTACTNUMBER":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_PASSPORT":"Application_Model_ApplicantsDailyStatus":private] => string(10) "2345234523"
+										  ["APPLICANTS_DAILYSTATUS_PASSPORTDATEISSUE":"Application_Model_ApplicantsDailyStatus":private] => string(10) "10/06/2011"
+										  ["APPLICANTS_DAILYSTATUS_PASSPORTDATEEXPIRE":"Application_Model_ApplicantsDailyStatus":private] => string(10) "12/19/2013"
+										  ["APPLICANTS_DAILYSTATUS_PASSPORTPLACEISSUE":"Application_Model_ApplicantsDailyStatus":private] => string(3) "NCR"
+										  ["APPLICANTS_DAILYSTATUS_APPIN":"Application_Model_ApplicantsDailyStatus":private] => string(10) "12/21/2013"
+										  ["APPLICANTS_DAILYSTATUS_MEDICALDATE":"Application_Model_ApplicantsDailyStatus":private] => string(10) "12/21/2013"
+										  ["APPLICANTS_DAILYSTATUS_MEDICALRESULT":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_NBI":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_NBIRR":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_TRAINING":"Application_Model_ApplicantsDailyStatus":private] => string(3) "Yes"
+										  ["APPLICANTS_DAILYSTATUS_PDOS":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_TESDA":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_OWWA":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_VISA_DATEISSUE":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_VISA_DATEEXPIRE":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_STAMPING_FILE":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_STAMPING_RELEASE":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_CONTRACTIN":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_PROCESSDATE":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_BOOKDATE":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_DEPLOYEDDATE":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_SPEAKENGLISH":"Application_Model_ApplicantsDailyStatus":private] => string(4) "Good"
+										  ["APPLICANTS_DAILYSTATUS_REMARKS":"Application_Model_ApplicantsDailyStatus":private] => string(12) "remarks lang"
+										  ["APPLICANTS_DAILYSTATUS_ENDCONTRACT_DATE":"Application_Model_ApplicantsDailyStatus":private] => string(0) ""
+										  ["APPLICANTS_DAILYSTATUS_ISARCHIVE":"Application_Model_ApplicantsDailyStatus":private] => NULL
+										  ["APPLICANTS_DAILYSTATUS_DATECREATED":"Application_Model_ApplicantsDailyStatus":private] => string(10) "12/21/2013"
+										  ["APPLICANTS_DAILYSTATUS_DATEUPDATED":"Application_Model_ApplicantsDailyStatus":private] => string(19) "2013-12-21 01:52:15"
+										  ["APPLICANTS_DAILYSTATUS_CODE":"Application_Model_ApplicantsDailyStatus":private] => string(4) "xx23"
+										 */
+										$arrayResAppData = $this->arrayResAppData;
+										
+										$getappdailystatus = new Application_Model_ApplicantsDailyStatusMapper();
+										$objMedResult = new Application_Model_ApplicantsDailyStatusMedicalresultSelectorMapper();
+										
+										foreach ($arrayResAppData as $appdata) {
+											//$deployeddate =;
+											$appDailyStat = $getappdailystatus->getApplicantsDailyStatusById($appdata['APPLICANTS_PERSONAL_DATA_ID']);
+											if( !$appDailyStat->APPLICANTS_DAILYSTATUS_DEPLOYEDDATE) {
+											
+												if(!is_null($appDailyStat->APPLICANTS_DAILYSTATUS_CODE)) {
+												//Zend_Debug::dump($appDailyStat);
+												echo '<form method="post" id="formid'.$appdata['APPLICANTS_PERSONAL_DATA_ID'].'">
+											  		<tr id="'.$appdata['APPLICANTS_PERSONAL_DATA_ID'].'">
+														<td class="center" id="APPLICANTS_PERSONAL_DATA_NAME">'.$appdata['APPLICANTS_PERSONAL_DATA_FIRSTNAME'].' '.$appdata['APPLICANTS_PERSONAL_DATA_LASTNAME'].'</td>
+														
+											  			<td> '.$appDailyStat->APPLICANTS_DAILYSTATUS_CODE.'</td>
+														<td> '.$appDailyStat->AGENTBRANCH_ID.'</td>
+														
+													
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_CONTACTNUMBER">'.$appDailyStat->APPLICANTS_DAILYSTATUS_CONTACTNUMBER.' </td>
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_APPIN">
+															'.$appDailyStat->APPLICANTS_DAILYSTATUS_APPIN.'
+														</td>
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_MEDICALDATE">
+															'.$appDailyStat->APPLICANTS_DAILYSTATUS_MEDICALDATE;
+	
+													
+														if(!is_null($appDailyStat->APPLICANTS_DAILYSTATUS_MEDICALDATE)) {
+	
+															$objRes = $objMedResult->getApplicantsDailyStatusMedicalSelectorById($appDailyStat->APPLICANTS_DAILYSTATUS_MEDICALRESULT);
+															
+															echo '<span class="label '.$objRes->APPLICANTS_DAILYSTATUS_MEDICALRESULT_SELECTOR_STAT.'">
+											  					'.$objRes->APPLICANTS_DAILYSTATUS_MEDICALRESULT_SELECTOR_VALUE.'
+											  					</span>';
+														}
+													
+										  		
+										  		echo '			
+															
+														</td>
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_NBI">'.($appDailyStat->APPLICANTS_DAILYSTATUS_NBI ? "<span class='label label-success'> $appDailyStat->APPLICANTS_DAILYSTATUS_NBI </span>": "").'</td>
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_NBIRR">'.($appDailyStat->APPLICANTS_DAILYSTATUS_NBIRR ? "<span class='label label-success'> $appDailyStat->APPLICANTS_DAILYSTATUS_NBIRR </span>": "").'	</td>
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_TRAINING">
+															'.($appDailyStat->APPLICANTS_DAILYSTATUS_TRAINING ? "<span class='label label-success'> $appDailyStat->APPLICANTS_DAILYSTATUS_TRAINING </span>": "").'
+														</td>
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_PDOS">
+															'.$appDailyStat->APPLICANTS_DAILYSTATUS_PDOS.'
+														</td>
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_TESDA">
+															'.$appDailyStat->APPLICANTS_DAILYSTATUS_TESDA.'
+														</td>
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_OWWA">
+															'.$appDailyStat->APPLICANTS_DAILYSTATUS_OWWA.'
+														</td>
+											  			<td class="center setValue" id="APPLICANTS_DAILYSTATUS_VISA">
+																<span class="label label-success" id="APPLICANTS_DAILYSTATUS_VISA_DATEISSUE">'.$appDailyStat->APPLICANTS_DAILYSTATUS_VISA_DATEISSUE.'</span>
+											  					<span class="label label-important" id="APPLICANTS_DAILYSTATUS_VISA_DATEEXPIRE">'.$appDailyStat->APPLICANTS_DAILYSTATUS_VISA_DATEEXPIRE.'</span> 
+														</td>
+											  			<td class="center setValue" id="APPLICANTS_DAILYSTATUS_STAMPING">
+																<span class="label label-success" id="APPLICANTS_DAILYSTATUS_STAMPING_FILE">'.$appDailyStat->APPLICANTS_DAILYSTATUS_STAMPING_FILE.'</span>
+											  					<span class="label label-important" id="APPLICANTS_DAILYSTATUS_STAMPING_RELEASE">'.$appDailyStat->APPLICANTS_DAILYSTATUS_STAMPING_RELEASE.'</span> 
+														</td>
+											  			<td class="center setValue" id="APPLICANTS_DAILYSTATUS_CONTRACTIN">
+																'.$appDailyStat->APPLICANTS_DAILYSTATUS_CONTRACTIN.'
+														</td>
+											  			<td class="center setValue" id="APPLICANTS_DAILYSTATUS_PROCESSDATE">
+																'.$appDailyStat->APPLICANTS_DAILYSTATUS_PROCESSDATE.'
+														</td>
+														<td class="center setValue" id="APPLICANTS_DAILYSTATUS_PROCESSDATE">
+																'.$appDailyStat->APPLICANTS_DAILYSTATUS_SERUM.'
+														</td>
+											  			<td class="center setValue" id="APPLICANTS_DAILYSTATUS_BOOKDATE">
+																'.$appDailyStat->APPLICANTS_DAILYSTATUS_BOOKDATE.'
+														</td>
+											  			<td class="center setValue" id="APPLICANTS_DAILYSTATUS_DEPLOYEDDATE">
+																'.$appDailyStat->APPLICANTS_DAILYSTATUS_DEPLOYEDDATE.'
+														</td>
+											  			<td class="center setValue" id="APPLICANTS_DAILYSTATUS_REMARKS">
+																'.$appDailyStat->APPLICANTS_DAILYSTATUS_REMARKS.'
+														</td>
+													</tr>
+														</form>';	
+										  		}
+											}	
+										}
+									
+									?>
+								  </tbody>
+							  </table>            
+							</div>
+						</div><!--/span-->
+					
+					</div><!--/row-->
+					
+			
+						<?php 
+						echo $this->partial('partials/todayactivity.phtml',
+								array('data' => $this->data));
+						?>
+			
+				
+				
+			
+				</div>
+				<!-- end: Content -->
+					
+			</div><!--/fluid-row-->
+			
+		
+		<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Set <span class="applicantsName"></span>'s  <span class="columnName">Col Name</span></h3> 
+			</div>
+			<div class="modal-body">
+				<p>Here settings can be configured...</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary">Save changes</a>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<div class="modal hide fade" id="myModalDailystat">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Set <span class="applicantsName"></span>'s  <span class="columnName">Col Name</span></h3> 
+			</div>
+			<div class="modal-body">
+				<p id="id"></p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary">Save changes</a>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		<?php 
+					echo $this->partial('partials/footer.phtml',
+							array('data' => $this->data));
+					?>
+</div>
+
+
+
+

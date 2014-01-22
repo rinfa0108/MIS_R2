@@ -1,0 +1,43 @@
+.login-box input[type="text"], 
+.login-box input[type="password"] {
+	color : #383E4B !important;	
+}
+
+.login-box .alert { margin-bottom : 0px !important;margin-top :5px !important;}
+/***
+ Added CSS MARK
+
+**/
+.floatLeft {
+	float: left;
+}
+.floatRight {
+	float: right;
+}
+.educationalSpan {
+	padding: 0 0 0 24px;
+}
+#dailystatus {
+	overflow-x:scroll; overflow-y: hidden; 
+}
+
+#dailystatus table.datatable td.setValue {
+	cursor : pointer;
+}
+
+#dailystatus table #APPLICANTS_PERSONAL_DATA_NAME {
+	cursor : pointer;
+}
+
+#dailystatus table #APPLICANTS_PERSONAL_DATA_NAME:hover{
+	text-decoration : underline;
+}
+
+span#labelMedicalresult {
+	font-weight : bold;
+}
+
+.box .box-header-deployed {
+	/** #36A93B */
+	background: none repeat scroll 0 0 #78CD51; 
+}

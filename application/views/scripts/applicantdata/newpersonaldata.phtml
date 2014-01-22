@@ -1,0 +1,219 @@
+<?php 
+echo $this->partial('partials/navbar.phtml',
+		array('selected' => $this->navdata));
+?>
+
+<div class="container-fluid-full">
+
+		<div class="row-fluid">
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="span2">
+				
+				<div class="row-fluid actions">
+													
+					<input type="text" class="search span12" placeholder="..." />
+				
+				</div>	
+				
+				<?php 
+					echo $this->partial('partials/mainmenu.phtml',
+							array('data' => $this->data));
+					?>
+				
+				
+			</div>
+			<!-- end: Main Menu -->
+						
+			<!-- start: Content -->
+			<div id="content" class="span10">
+			
+					<?php 
+					echo $this->partial('partials/applicantdatamenu.phtml',
+							array('data' => $this->data));
+					?>
+
+						<div class="row-fluid">
+							<div class="box span12">
+							
+								<div class="box-header">
+									<h2><i class="icon-edit"></i>PERSONAL DATA</h2>
+									<div class="box-icon">
+										<a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
+										<a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+										<a href="#" class="btn-close"><i class="icon-remove"></i></a>
+									</div>
+								</div>
+								<div class="box-content">
+										<form class="form-horizontal" action="/applicantdata/newfamilydata" method="post" name="frmNewPersonalDataSubmit" id="frmNewPersonalDataSubmit"/>
+											  <fieldset>
+											  		<input type="hidden" name="newpersonaldata" id="newpersonaldata" value="1">
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Desired Position</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputDesiredPosition" >
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Religion</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputReligion" >
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Age</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputAge" >
+													</div>
+												  </div>
+												  <div class="control-group ">
+														<label for="inputSuccess" class="control-label">Other skill</label>
+														<div class="controls">
+														  <input type="text" id="inputSuccess" name="inputOtherSkill" >
+														</div>
+												  </div>
+												  
+												   <div class="control-group">
+													<label class="control-label">Ex Abroad ?</label>
+													<div class="controls">
+													  <label class="radio">
+														<input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked="" />
+														Yes
+													  </label>
+													  <div style="clear:both"></div>
+													  <label class="radio">
+														<input type="radio" name="optionsRadios" id="optionsRadios2" value="0" />
+														No
+													  </label>
+													</div>
+												  </div>
+												  
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">If yes, What Country</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputWhatCountry" >
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">How Many Years Abroad?</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputYearsAbroad" >
+													</div>
+												  </div>
+												  
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">First name</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputFirstName" >
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Middle name</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputMiddleName" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Last name</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputLastName" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Height</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputHeight" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Weight</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputWeight" />
+													</div>
+												  </div>
+												  <?php 
+												  	$gender_mapper = new Application_Model_ApplicantsPersonalDataGenderselectorMapper();
+												  	$gender = $gender_mapper->fetchAllApplicantsPersonalDataGenderselector();
+												  	//print_r($res);
+												  ?>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Gender</label>
+													<div class="controls">
+													  <select id="selectError3" name="inputGender">
+													  		<option value=""></option>
+													  		<?php 
+													  		foreach($gender as $k) {
+													  			echo '<option value="'.$k['APPLICANTS_PERSONAL_DATA_GENDER_SELECTOR_ID'].'">'.$k['APPLICANTS_PERSONAL_DATA_GENDER_SELECTOR_VALUE'].'</option>';	
+													  		}
+													  		?>
+													  </select>
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Address</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputAddress" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Telephone Number</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputTelNumber" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Cellphone Number</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputCellphoneNumber" />
+													</div>
+												  </div>
+												  <div class="control-group">
+													  <label class="control-label" for="inputBirthdate">Date Of Birth</label>
+													  <div class="controls">
+														<input type="text" class="input-xlarge datepicker" id="inputBirthdate" name="inputBirthdate" value="" />
+													  </div>
+													</div>
+												
+												  <div class="control-group ">
+													<label for="inputSuccess" class="control-label">Place Of Birth</label>
+													<div class="controls">
+													  <input type="text" id="inputSuccess" name="inputPlaceofbirth" />
+													</div>
+												  </div>
+												  <div class="control-group ">
+													<div class="controls">
+													  <button class="btn btn-primary" type="submit" id="inputNewPersonalDataSubmit" name="inputNewPersonalDataSubmit">Save and Continue</button>
+													</div>
+												  </div>
+											  </fieldset>
+										</form>
+									</div>	
+								</div>	   
+						</div><!--/row-->	
+			</div>
+			<!-- end: Content -->
+				
+		</div><!--/fluid-row-->
+		
+
+		<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Settings</h3>
+			</div>
+			<div class="modal-body">
+				<p>Here settings can be configured...</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary">Save changes</a>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<?php 
+					echo $this->partial('partials/footer.phtml',
+							array('data' => $this->data));
+					?>
+</div>
